@@ -1,0 +1,9 @@
+{
+  "db_host":            "localhost",
+  "db_name":            "tft_db",
+  "db_user":            "YOUR_DB_USERNAME",
+  "db_pass":            "YOUR_DB_PASSWORD",
+  "db_charset":         "utf8mb4",
+  "token_expiry_hours": 24,
+  "web3forms_key":      "YOUR_WEB3FORMS_ACCESS_KEY"
+}
