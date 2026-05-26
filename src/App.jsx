@@ -67,7 +67,7 @@ export default function App() {
       <Route path="/"      element={<HomePage />} />
       <Route path="/admin" element={<AdminRoute />} />
     </Routes>
-    <CMFloatAd color="#ffffff"  />
+    <CMFloatAd color="#797777" bgColor="transparent" />
     </>
   );
 }

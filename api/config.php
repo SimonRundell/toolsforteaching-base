@@ -32,11 +32,18 @@ define('DB_USER',    $_cfg['db_user']    ?? '');
 define('DB_PASS',    $_cfg['db_pass']    ?? '');
 define('DB_CHARSET', $_cfg['db_charset'] ?? 'utf8mb4');
 
-/** Absolute filesystem path for uploaded images */
-define('UPLOAD_DIR',        dirname(__DIR__) . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR);
+/**
+ * Absolute filesystem path for uploaded images.
+ * Override via "upload_dir" in .config.json for live deployments where
+ * the Vite build flattens public/ into the web root (no public/ subdirectory).
+ */
+define('UPLOAD_DIR', $_cfg['upload_dir'] ?? dirname(__DIR__) . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR);
 
-/** URL prefix for uploaded images (relative, works on any host) */
-define('UPLOAD_URL_PREFIX', '/images/');
+/**
+ * URL prefix returned to the client for uploaded images.
+ * Override via "upload_url_prefix" in .config.json if the app lives in a subdirectory.
+ */
+define('UPLOAD_URL_PREFIX', $_cfg['upload_url_prefix'] ?? '/images/');
 
 /** Auth token lifetime in hours */
 define('TOKEN_EXPIRY_HOURS', (int) ($_cfg['token_expiry_hours'] ?? 24));

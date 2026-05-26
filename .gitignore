@@ -14,8 +14,10 @@ dist-ssr
 
 # Local config files (contain credentials — copy from .example.config.json)
 .config.json
+.config.live.json
 public/.config.json
 api/.config.json
+api/.config.live.json
 
 # Editor directories and files
 .vscode/*

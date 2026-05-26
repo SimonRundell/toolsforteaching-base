@@ -13,7 +13,7 @@ import Link from '@tiptap/extension-link';
 export default function RichTextEditor({ value, onChange }) {
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({ link: false }), // StarterKit v3 bundles Link; disable to avoid duplicate
       Link.configure({
         openOnClick: false,
         HTMLAttributes: { target: '_blank', rel: 'noopener noreferrer' },
