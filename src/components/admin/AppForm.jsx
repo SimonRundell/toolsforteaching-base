@@ -8,17 +8,17 @@ import client from '../../api/client';
 import RichTextEditor from './RichTextEditor';
 
 const BADGE_PRESETS = [
-  { label: 'Python',      bg: '#4B8BBE', fg: '#FFFF00' },
-  { label: 'Agile',       bg: '#FFFF80', fg: '#1a1a2e' },
-  { label: 'Terminal',    bg: '#1a1a2e', fg: '#74c69d' },
+  { label: 'PYTHON',      bg: '#4B8BBE', fg: '#FFFF00' },
+  { label: 'AGILE',       bg: '#FFFF80', fg: '#1a1a2e' },
+  { label: 'TERMINAL',    bg: '#1a1a2e', fg: '#74c69d' },
   { label: 'SQL',         bg: '#a8dadc', fg: '#1a1a2e' },
-  { label: 'Cyber',       bg: '#e63946', fg: '#ffffff' },
-  { label: 'Networking',  bg: '#c77dff', fg: '#1a1a2e' },
-  { label: 'Revision',    bg: '#fb923c', fg: '#1a1a2e' },
-  { label: 'Testing',     bg: '#ffc5d3', fg: '#1a1a2e' },
-  { label: 'Hardware',    bg: '#a8dadc', fg: '#1a1a2e' },
-  { label: 'Web Dev',     bg: '#74c69d', fg: '#1a1a2e' },
-  { label: 'Crypto',      bg: '#1a1a2e', fg: '#a9dd15' },
+  { label: 'CYBER',       bg: '#e63946', fg: '#ffffff' },
+  { label: 'NETWORKING',  bg: '#c77dff', fg: '#1a1a2e' },
+  { label: 'REVISION',    bg: '#fb923c', fg: '#1a1a2e' },
+  { label: 'TESTING',     bg: '#ffc5d3', fg: '#1a1a2e' },
+  { label: 'HARDWARE',    bg: '#a8dadc', fg: '#1a1a2e' },
+  { label: 'WEB DEV',     bg: '#74c69d', fg: '#1a1a2e' },
+  { label: 'CRYPTO',      bg: '#1a1a2e', fg: '#a9dd15' },
 ];
 
 const EMPTY = {
@@ -121,7 +121,7 @@ export default function AppForm({ app, onSave, onCancel, user }) {
 
       <div className="form-group">
         <label>Badge Text</label>
-        <input value={form.badge} onChange={e => set('badge', e.target.value)} placeholder="e.g. Python" />
+        <input value={form.badge} onChange={e => set('badge', e.target.value.toUpperCase())} placeholder="e.g. PYTHON" />
       </div>
 
       {form.badge && (

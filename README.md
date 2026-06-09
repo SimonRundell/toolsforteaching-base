@@ -2,7 +2,7 @@
 
 A React + PHP + MySQL web application for showcasing and managing teaching tools and articles. Built for Further Education teachers to maintain a public-facing catalogue of tools, with a full-featured admin panel.
 
-**Version:** 0.0.2  
+**Version:** 0.0.2233  
 **License:** [CC BY-NC-SA 4.0](LICENSE)  
 **Author:** Simon Rundell, ITDD Department, Exeter and North Devon Colleges Group
 
@@ -274,6 +274,21 @@ mysql -u root -p tft_db < database/migrate_badge_colours.sql
 - **Badge colours** — `badge_bg` / `badge_fg` are stored as hex strings (e.g. `#4B8BBE`). When empty, the legacy `badge_class` CSS class is applied as a fallback for backward compatibility with seeded data.
 - **Rich text** — `more_info_body` stores HTML output by Tiptap. It is rendered via `dangerouslySetInnerHTML` in the More Info modal. The source is admin-controlled, so the XSS surface is limited to authenticated users.
 - **Drag-and-drop** — uses native HTML5 drag events via the `useDragSort` hook. On drop, sort orders are updated optimistically in state and then persisted via `PATCH`.
+
+---
+
+## Changelog
+
+### 0.0.2233 — 2026-06-09
+
+#### Added
+- **Tool card filtering** — a filter bar now appears above the tools grid on the public site, offering a free-text search (matches against `title`, `description`, and `more_info_body`) and a badge-category dropdown (populated dynamically from the loaded tools, with an "All categories" default). Both filters compose: the badge narrows the set first, then the search query is applied. A "No tools match your search." message is shown when the combined filters return no results.
+
+#### Changed
+- **Badge text normalised to uppercase** — the Badge Text input in the admin form now forces uppercase as the user types. Both the `POST` (create) and `PUT` (update) handlers in `api/apps.php` wrap the incoming `badge` value in `strtoupper()` before storage. The eleven built-in colour presets in `AppForm.jsx` have been relabelled to uppercase for consistency. The public filter normalises badge values with `.toUpperCase()` defensively, so any pre-existing mixed-case records continue to group and filter correctly until they are re-saved.
+
+#### Fixed
+- **Card width on sparse filter results** — changed the tools and articles grid from `repeat(auto-fit, …)` to `repeat(auto-fill, …)`. `auto-fit` collapses empty tracks, causing a single result card to stretch full-width and its image to over-crop. `auto-fill` retains the ghost column tracks so every card stays at its normal column width regardless of how many results the filter returns.
 
 ---
 

@@ -189,10 +189,40 @@ h1 { margin-bottom: 12px; }
 }
 .section-header p { font-size: 15px; color: var(--text-muted); }
 
+/* ── TOOLS FILTER BAR ────────────────────────────────────── */
+.tools-filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.tools-filter-bar input[type="search"],
+.tools-filter-bar select {
+  padding: 10px 12px;
+  border: var(--border);
+  border-radius: 0;
+  background: white;
+  color: var(--ink);
+  font-size: 14px;
+  font-family: inherit;
+}
+.tools-filter-bar input[type="search"] {
+  flex: 1;
+  min-width: 200px;
+}
+.tools-filter-bar select {
+  min-width: 160px;
+}
+.tools-filter-bar input[type="search"]:focus,
+.tools-filter-bar select:focus {
+  outline: 2px solid var(--lime);
+  outline-offset: 0;
+}
+
 /* ── GRIDS ───────────────────────────────────────────────── */
 .tools-grid, .articles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
 }
 .article-card { height: 320px; }
