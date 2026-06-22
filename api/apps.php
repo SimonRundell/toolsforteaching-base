@@ -37,6 +37,9 @@ if ($method === 'POST') {
     $user = requireAuth();
     $data = getBody();
 
+    $authorId = (int) ($data['author_id'] ?? $user['id']);
+    if ($authorId === 0) $authorId = null;
+
     $stmt = $db->prepare(
         'INSERT INTO apps
              (app_key, title, description, image_path, image_alt,
@@ -59,7 +62,7 @@ if ($method === 'POST') {
         trim($data['more_info_title']?? ''),
         $data['more_info_body']      ?? '',
         (int) ($data['sort_order']   ?? 0),
-        $user['id'],
+        $authorId,
     ]);
 
     $id   = $db->lastInsertId();
@@ -75,11 +78,14 @@ if ($method === 'PUT') {
     if (!$id) errorResponse('id parameter required');
     $data = getBody();
 
+    $authorId = array_key_exists('author_id', $data) ? (int) $data['author_id'] : null;
+    if ($authorId === 0) $authorId = null;
+
     $stmt = $db->prepare(
         'UPDATE apps SET
              app_key=?, title=?, description=?, image_path=?, image_alt=?,
              badge=?, badge_class=?, badge_bg=?, badge_fg=?, launch_url=?, github_url=?,
-             more_info_title=?, more_info_body=?, sort_order=?, active=?
+             more_info_title=?, more_info_body=?, sort_order=?, active=?, author_id=?
          WHERE id=?'
     );
     $stmt->execute([
@@ -98,6 +104,7 @@ if ($method === 'PUT') {
         $data['more_info_body']      ?? '',
         (int) ($data['sort_order']   ?? 0),
         (int) ($data['active']       ?? 1),
+        $authorId,
         $id,
     ]);
 

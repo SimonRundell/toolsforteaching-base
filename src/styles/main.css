@@ -161,7 +161,7 @@ h1 { margin-bottom: 12px; }
   cursor: pointer;
   text-decoration: none;
 }
-.tool-card-actions .btn { padding: 9px 16px; font-size: 12px; }
+.tool-card-actions .btn { padding: 9px 24px; font-size: 12px; }
 
 .btn-primary { background: var(--lime); color: var(--ink); }
 .btn-primary:hover { background: var(--yellow); transform: translateY(-2px); box-shadow: 4px 4px 0 var(--ink); }
@@ -169,6 +169,9 @@ h1 { margin-bottom: 12px; }
 
 .btn-secondary { background: var(--chalk); color: var(--ink); }
 .btn-secondary:hover { background: rgba(245,240,232,0.1); border-color: var(--chalk); transform: translateY(-2px); }
+
+.btn-bmc { background: #FFDD00; color: var(--ink); border-color: var(--ink); }
+.btn-bmc:hover { background: #ffe833; transform: translateY(-2px); box-shadow: 4px 4px 0 var(--ink); }
 
 .btn-danger { background: var(--red); color: white; border-color: var(--red); }
 .btn-danger:hover { background: #c1121f; transform: translateY(-2px); box-shadow: 4px 4px 0 var(--ink); }
@@ -310,14 +313,17 @@ h1 { margin-bottom: 12px; }
   margin-bottom: 20px; flex: 1;
 }
 .tool-card-actions {
-  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-  margin-top: auto; flex-wrap: wrap-reverse;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; flex-wrap: wrap; margin-top: auto;
+}
+.tool-card-actions-left  { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.tool-card-actions-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
 }
 
 /* ── MORE INFO BUTTON ────────────────────────────────────── */
 .more-info-btn {
   display: inline-flex; align-items: center; gap: 6px;
-  height: 38px; padding: 0 12px; border-radius: 0;
+  padding: 9px 24px; border-radius: 0;
   border: var(--border); background: transparent; color: var(--ink);
   cursor: pointer; font-family: 'DM Sans', sans-serif;
   font-weight: 600; font-size: 12px; letter-spacing: 0.5px;

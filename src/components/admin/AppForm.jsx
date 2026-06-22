@@ -3,7 +3,7 @@
  * Handles image upload via /api/upload.php.
  * @license CC BY-NC-SA 4.0
  */
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import client from '../../api/client';
 import RichTextEditor from './RichTextEditor';
 
@@ -26,6 +26,7 @@ const EMPTY = {
   badge: '', badge_class: '', badge_bg: '', badge_fg: '',
   launch_url: '', github_url: '',
   more_info_title: '', more_info_body: '', sort_order: 0, active: 1,
+  author_id: 0,
 };
 
 /**
@@ -36,7 +37,12 @@ export default function AppForm({ app, onSave, onCancel, user }) {
   const [error,    setError]    = useState('');
   const [saving,   setSaving]   = useState(false);
   const [uploading,setUploading]= useState(false);
+  const [users,    setUsers]    = useState([]);
   const fileRef                 = useRef();
+
+  useEffect(() => {
+    client.get('/admin_users.php').then(({ data }) => setUsers(data)).catch(() => {});
+  }, []);
 
   const set = (field, val) => setForm(f => ({ ...f, [field]: val }));
 
@@ -111,6 +117,17 @@ export default function AppForm({ app, onSave, onCancel, user }) {
       <div className="form-group">
         <label>Title *</label>
         <input required value={form.title} onChange={e => set('title', e.target.value)} />
+      </div>
+
+      <div className="form-group">
+        <label>Author / Creator</label>
+        <select value={form.author_id} onChange={e => set('author_id', parseInt(e.target.value))}>
+          <option value={0}>— No author attributed —</option>
+          {users.map(u => (
+            <option key={u.id} value={u.id}>{u.username}</option>
+          ))}
+        </select>
+        <p className="form-hint">Sets the Support link on the public card. Leave unset if the creator is not an admin user.</p>
       </div>
 
       <div className="form-group">

@@ -27,6 +27,7 @@ if (!is_array($_cfg)) {
 }
 
 define('DB_HOST',    $_cfg['db_host']    ?? 'localhost');
+define('DB_PORT',    (int) ($_cfg['db_port'] ?? 3306));
 define('DB_NAME',    $_cfg['db_name']    ?? 'tft_db');
 define('DB_USER',    $_cfg['db_user']    ?? '');
 define('DB_PASS',    $_cfg['db_pass']    ?? '');
@@ -60,8 +61,8 @@ function getDB(): PDO {
     static $pdo = null;
     if ($pdo === null) {
         $dsn = sprintf(
-            'mysql:host=%s;dbname=%s;charset=%s',
-            DB_HOST, DB_NAME, DB_CHARSET
+            'mysql:host=%s;port=%d;dbname=%s;charset=%s',
+            DB_HOST, DB_PORT, DB_NAME, DB_CHARSET
         );
         $pdo = new PDO($dsn, DB_USER, DB_PASS, [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
