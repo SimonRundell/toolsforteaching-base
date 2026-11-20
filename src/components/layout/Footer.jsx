@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container">
         <p>
           Tools for Teaching · Free classroom tools for educators ·
-          Created by ITDD staff at the Exeter and North Devon Colleges Group.
+          Created by Cybersecurity and Digital Technologies staff at the Exeter and North Devon Colleges Group.
         </p>
       </div>
     </footer>

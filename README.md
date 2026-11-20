@@ -4,7 +4,7 @@ A React + PHP + MySQL web application for showcasing and managing teaching tools
 
 **Version:** 0.0.2233  
 **License:** [CC BY-NC-SA 4.0](LICENSE)  
-**Author:** Simon Rundell, ITDD Department, Exeter and North Devon Colleges Group
+**Author:** Simon Rundell, Cybersecurity and Digital Technologies Department, Exeter and North Devon Colleges Group
 
 ---
 
@@ -298,4 +298,4 @@ Released under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 In
 
 You are free to share and adapt this work for non-commercial purposes, provided you give appropriate credit and distribute your contributions under the same licence.
 
-© 2024–2025 Simon Rundell, ITDD Department, Exeter and North Devon Colleges Group
+© 2024–2025 Simon Rundell, Cybersecurity and Digital Technologies Department, Exeter and North Devon Colleges Group

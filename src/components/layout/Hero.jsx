@@ -96,7 +96,7 @@ export default function Hero({ onContactClick }) {
 
           <p>
             Tools for Teaching is a growing collection of classroom-ready web apps created by
-            ITDD staff at the{' '}
+            Cybersecurity and Digital Technologies staff at the{' '}
             <a target="_blank" href="https://exe-coll.ac.uk/endc/" rel="noopener noreferrer">
               Exeter and North Devon Colleges Group
             </a>.
